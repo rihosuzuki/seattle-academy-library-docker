@@ -1,0 +1,57 @@
+version: '3'
+services:
+  # データの永続化
+  data:
+    image: "busybox"
+    container_name: 'seattle_academy_data'
+    volumes:
+      - "db:/var/lib/postgres"
+
+  # データベース
+  db:
+    build: .
+    image: "postgres:latest"
+    container_name: 'seattle_academy_postgres'
+    environment:
+      POSTGRES_DB: seattle_academy_database
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  # メール
+  mailcatcher:
+    container_name: 'seattle_academy_mailcatcher'
+    image: schickling/mailcatcher
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+  # ストレージ
+  minio:
+    image: minio/minio:latest
+    container_name: 'seattle_academy_minio'
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    entrypoint: sh
+    command: -c "
+        mkdir -p /data/.minio.sys/buckets;
+        cp -r /policies/* /data/.minio.sys/;
+        cp -r /export/* /data/;
+        /opt/bin/minio server /data --console-address :9001;"
+    volumes:
+      - ./docker/minio/data:/data
+      - ./docker/minio/export:/export
+      - ./docker/minio/config:/root/.minio
+      - ./docker/minio/policies:/policies 
+
+volumes:
+  data:
+  db:
+    driver: local
