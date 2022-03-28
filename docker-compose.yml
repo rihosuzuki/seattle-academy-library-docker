@@ -13,13 +13,13 @@ services:
     image: "postgres:latest"
     container_name: 'seattle_academy_postgres'
     environment:
-      POSTGRES_DB: seattle_academy_database
+      POSTGRES_DB: seattle_academy_database # POSTGRES_DBを記載しない場合はPOSTGRES_USERの値が自動で入力される
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - 5433:5432
+      - 5433:5432 # DBeaverなど外部から接独する場合は左側のポート番号を入力する
 
   # メール
   mailcatcher:
