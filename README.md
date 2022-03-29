@@ -18,7 +18,6 @@
     |  CONTAINER ID  |  IMAGE  |  COMMAND  |  CREATED  |  STATUS  |  PORTS  |  NAMES  |
     | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
     |  4744ee988489  |  postgres:latest  |  "docker-entrypoint.s…"  |  36 minutes ago  |  Up 40 seconds  |  0.0.0.0:5433->5432/tcp  |  seattle_academy_postgres  |
-    |  c0032895a50d  |  schickling/mailcatcher  |  "mailcatcher --no-qu…"  |  3 days ago  |  Up 3 days  |  0.0.0.0:1025->1025/tcp, 0.0.0.0:1080->1080/tcp  |  seattle_academy_mailcatcher  |
     |  35f5beff2fe9  |  minio/minio:latest  |  "sh -c ' mkdir -p /d…"  |  3 days ago  |  Up 3 days  |  0.0.0.0:9000-9001->9000-9001/tcp  |  seattle_academy_minio  |
 
 

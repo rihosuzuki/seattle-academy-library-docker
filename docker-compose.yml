@@ -21,14 +21,6 @@ services:
     ports:
       - 5433:5432 # DBeaverなど外部から接独する場合は左側のポート番号を入力する
 
-  # メール
-  mailcatcher:
-    container_name: 'seattle_academy_mailcatcher'
-    image: schickling/mailcatcher
-    ports:
-      - 1080:1080
-      - 1025:1025
-
   # ストレージ
   minio:
     image: minio/minio:latest
