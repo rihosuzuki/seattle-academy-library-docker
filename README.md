@@ -13,7 +13,7 @@
     ```
     docker ps
     ```
-    以下のように3つのコンテナが起動中ならOK
+    以下のように2つのコンテナが起動中ならOK
 
     |  CONTAINER ID  |  IMAGE  |  COMMAND  |  CREATED  |  STATUS  |  PORTS  |  NAMES  |
     | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
