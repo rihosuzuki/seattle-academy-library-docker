@@ -19,7 +19,8 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - 5433:5432 # DBeaverなど外部から接独する場合は左側のポート番号を入力する
+      - 3306:3306 # DBeaverなど外部から接独する場合は左側のポート番号を入力する
+    command: -p 3306
 
   # ストレージ
   minio:
