@@ -17,7 +17,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./db/postgres:/var/lib/postgresql/data
+      - ./db/logs:/var/log
     ports:
       - 3306:3306 # DBeaverなど外部から接独する場合は左側のポート番号を入力する
     command: -p 3306
